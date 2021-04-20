@@ -9,6 +9,7 @@ const API_HOST = "http://localhost:8080/";
 
 export default function App() {
   return (
+    // wrap app in context wrapper and pass down data
     <ContextWrapper data={API_HOST}>
       <Switch>
         <Route path="/" component={Landing} exact />
