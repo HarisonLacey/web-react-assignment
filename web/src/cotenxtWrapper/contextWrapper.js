@@ -5,7 +5,7 @@ const NewContext = createContext();
 
 export function ContextWrapper({ children, data }) {
   return (
-    <NewContext.Provider value={{ con: data }}>{children}</NewContext.Provider>
+    <NewContext.Provider value={data}>{children}</NewContext.Provider>
   );
 }
 
