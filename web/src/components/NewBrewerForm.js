@@ -1,9 +1,43 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
 const axios = require("axios");
 
 // new brewer form
 
 export default function NewBrewerForm() {
-  return <form>Brewer</form>;
+  const [name, setName] = useState();
+  const [response, setResponse] = useState();
+  let API_HOST = useContextWrapper();
+  // set name and response on form submit and fetch brewer save api
+  async function formHandle(e) {
+    e.preventDefault();
+    try {
+      await axios.post(
+        `${API_HOST}brewers/`,
+        {
+          name: name,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+      setResponse("Brewer saved!");
+    } catch (err) {
+      console.log(err.message);
+      setResponse("Brewer already exists!");
+    }
+  }
+  return (
+    // new brewer save form
+    <form onSubmit={formHandle}>
+      <input
+        placeholder="Brewer Name"
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+      <p>{response}</p>
+    </form>
+  );
 }
