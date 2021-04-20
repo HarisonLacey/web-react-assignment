@@ -37,6 +37,7 @@ services:
         - postgres
       environment:
         - API_HOSTNAME=api
+        - CHOKIDAR_USEPOLLING=true
 
 volumes:
   postgres_data:
