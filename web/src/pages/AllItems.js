@@ -26,7 +26,7 @@ export default function AllItems() {
     <div>
       {items.map((e) => (
         <p>
-          <a href={`/${id}/${e.id}`}>
+          <a href={`${id}/${e.id}`}>
             {id === "recipes" && e.title}
             {id === "brewers" && e.name}
           </a>
