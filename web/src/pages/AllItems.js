@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import React from "react";
-import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
+
 export default function AllItems() {
   const [items, setItems] = useState([]);
   let { id } = useParams();
@@ -16,6 +16,7 @@ export default function AllItems() {
           },
         });
         setItems(res.data);
+        console.log(res.data)
       } catch (err) {
         console.log(err.message);
       }
