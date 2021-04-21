@@ -5,8 +5,9 @@ import axios from "axios";
 
 export default function SingleItem() {
   const [item, setItem] = useState({});
+  const [recipes, setRecipes] = useState([]);
   let API_HOST = useContextWrapper();
-  let { type, id } = useParams();
+  let { type, index } = useParams();
   useEffect(() => {
     async function Item() {
       switch (type) {
@@ -17,19 +18,24 @@ export default function SingleItem() {
                 "Access-Control-Allow-Origin": "*",
               },
             });
-            setItem(res.data[id - 1]);
+            let itemFind = await res.data.find(
+              ({ id }) => id === parseInt(index)
+            );
+            setItem(itemFind);
           } catch (err) {
             console.log(err.message);
           }
           break;
         case "brewers":
           try {
-            let res = await axios.get(`${API_HOST}/brewers/${id}`, {
+            let res = await axios.get(`${API_HOST}/brewers/${index}`, {
               headers: {
                 "Access-Control-Allow-Origin": "*",
               },
             });
             setItem(res.data);
+            console.log(res.data);
+            setRecipes(res.data.recipes);
           } catch (err) {
             console.log(err.message);
           }
@@ -39,11 +45,29 @@ export default function SingleItem() {
       }
     }
     Item();
-  }, [API_HOST, id, type]);
+  }, [API_HOST, index, type]);
   return (
     <div>
-      {type === "recipes" && <p>{item.title}</p>}
-      {type === "brewers" && <p>{item.name}</p>}
+      {type === "recipes" && (
+        <div>
+          <p>{item.title}</p>
+          <p>
+            <a href={`/brewers/${item.brewer_id}`}>Visit Brewer</a>
+          </p>
+        </div>
+      )}
+      {type === "brewers" && (
+        <div>
+          <p>{item.name}</p>
+          <ul>
+            {recipes.map((recipe) => (
+              <li>
+                <a href={`/recipes/${recipe.id}`}>{recipe.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
