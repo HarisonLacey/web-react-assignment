@@ -16,7 +16,7 @@ export default function App() {
         <Route path="/" component={Landing} exact />
         <Route path="/new/:id" component={Forms} />
         <Route path="/:id" component={AllItems} exact/>
-        <Route path="/:type/:id" component={SingleItem} />
+        <Route path="/:type/:index" component={SingleItem} />
       </Switch>
     </ContextWrapper>
   );
