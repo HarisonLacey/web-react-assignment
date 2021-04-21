@@ -1,6 +1,7 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
+import React from 'react';
 import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
-const axios = require("axios");
+import axios from "axios";
 
 // new recipe form
 
@@ -17,7 +18,7 @@ export default function NewRecipeForm() {
   const [response, setResponse] = useState();
   let API_HOST = useContextWrapper();
   // set required body and fetch recipe save api
-  useLayoutEffect(() => {
+  useEffect(() => {
     async function fecthBrewers() {
       try {
         let res = await axios.get(`${API_HOST}/brewers/`, {
@@ -25,7 +26,6 @@ export default function NewRecipeForm() {
             "Access-Control-Allow-Origin": "*",
           },
         });
-        console.log(res.data);
         setBrewers(res.data);
       } catch (err) {
         console.log(err.message);
@@ -36,7 +36,7 @@ export default function NewRecipeForm() {
   async function formHandle(e) {
     e.preventDefault();
     try {
-      let res = await axios.post(
+      await axios.post(
         `${API_HOST}/brewers/${brewerId}/recipes/`,
         {
           title: title,

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from 'react';
 import { useParams } from "react-router-dom";
 import NewBrewerForm from "../components/NewBrewerForm";
 import NewRecipeForm from "../components/NewRecipeForm";
@@ -11,7 +12,7 @@ export default function Forms() {
   const { id } = useParams();
   useEffect(() => {
     setFormRender(id);
-  }, []);
+  }, [id]);
   return (
     <div>
       {formRender === "brewer" && <NewBrewerForm />}

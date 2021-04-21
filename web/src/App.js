@@ -1,8 +1,9 @@
 import { Route, Switch } from "react-router-dom";
 import Landing from "./pages/Landing";
+import React from 'react';
 import Forms from "./pages/Forms";
 import AllItems from "./pages/AllItems";
-import SingleRecipe from "./pages/SingleRecipe";
+import SingleRecipe from "./pages/SingleItem";
 import { ContextWrapper } from "./cotenxtWrapper/contextWrapper";
 
 const API_HOST = "http://localhost:8080";
@@ -14,8 +15,8 @@ export default function App() {
       <Switch>
         <Route path="/" component={Landing} exact />
         <Route path="/new/:id" component={Forms} />
-        <Route path="/all/:id" component={AllItems} />
-        <Route path="/all/:id/item" component={SingleRecipe} exact />
+        <Route path="/:id" component={AllItems} exact/>
+        <Route path="/:type/:id" component={SingleRecipe} />
       </Switch>
     </ContextWrapper>
   );

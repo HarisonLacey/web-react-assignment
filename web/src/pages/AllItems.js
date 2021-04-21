@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import React from "react";
 import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
-const axios = require("axios");
-
+import axios from "axios";
 export default function AllItems() {
   const [items, setItems] = useState([]);
   let { id } = useParams();
@@ -15,7 +15,6 @@ export default function AllItems() {
             "Access-Control-Allow-Origin": "*",
           },
         });
-        console.log(res.data);
         setItems(res.data);
       } catch (err) {
         console.log(err.message);
@@ -27,7 +26,7 @@ export default function AllItems() {
     <div>
       {items.map((e) => (
         <p>
-          <a href={`/all/${id}/item?id=${e.id}`}>
+          <a href={`/${id}/${e.id}`}>
             {id === "recipes" && e.title}
             {id === "brewers" && e.name}
           </a>

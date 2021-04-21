@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import axios from "axios";
 import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
-const axios = require("axios");
+
 
 // new brewer form
 
@@ -8,12 +9,12 @@ export default function NewBrewerForm() {
   const [name, setName] = useState();
   const [response, setResponse] = useState();
   let API_HOST = useContextWrapper();
-  // set name and response on form submit and fetch brewer save api
+  // set name and response and fetch brewer save api
   async function formHandle(e) {
     e.preventDefault();
     try {
       await axios.post(
-        `${API_HOST}brewers/`,
+        `${API_HOST}/brewers/`,
         {
           name: name,
         },

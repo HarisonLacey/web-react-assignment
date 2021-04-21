@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import React from 'react';
 
 // context wrapper for components
 const NewContext = createContext();
