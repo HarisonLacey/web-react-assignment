@@ -128,7 +128,7 @@ export default function AllItems() {
           )}
           {filter === "Strength" && (
             <div>
-              <Select required id="strength" onChange={listFilter}>
+              <Select required id="tags" onChange={listFilter}>
                 <option value="" disabled selected>
                   Strength
                 </option>
