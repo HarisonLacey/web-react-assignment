@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
 
-
 // new brewer form
 
 export default function NewBrewerForm() {

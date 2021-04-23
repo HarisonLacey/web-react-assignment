@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import React from 'react';
+import React from "react";
 import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
 import axios from "axios";
+import { Select } from "../styledComponents/sharedComponents";
 
 // new recipe form
 
@@ -62,8 +63,8 @@ export default function NewRecipeForm() {
   return (
     // new recipe save form
     <form onSubmit={formHandle}>
-      <select onChange={(e) => setBrewerId(e.target.value)} required>
-        <option key={0} value="">
+      <Select onChange={(e) => setBrewerId(e.target.value)} required>
+        <option key={0} value="" disabled selected>
           select brewer
         </option>
         {brewers.map((e) => (
@@ -71,20 +72,22 @@ export default function NewRecipeForm() {
             {e.name}
           </option>
         ))}
-      </select>
+      </Select>
       <input placeholder="title" onChange={(e) => setTitle(e.target.value)} />
       <input
         placeholder="description"
         onChange={(e) => setDescription(e.target.value)}
         required
       />
-      <input
-        placeholder="bean type"
-        onChange={(e) => setBeanType(e.target.value)}
-        required
-      />
-      <select onChange={(e) => setBrewTime(e.target.value)} required>
-        <option value="">brew time</option>
+      <Select onChange={(e) => setBeanType(e.target.value)} required>
+        <option value="" disabled selected>bean type</option>
+        <option value={"Robusta"}>Robusta</option>
+        <option value={"Liberica"}>Liberica</option>
+        <option value={"Arabica"}>Arabica</option>
+        <option value={"Other"}>Other</option>
+      </Select>
+      <Select onChange={(e) => setBrewTime(e.target.value)} required>
+        <option value="" disabled selected>brew time</option>
         <option value={1}>1</option>
         <option value={2}>2</option>
         <option value={3}>3</option>
@@ -95,24 +98,36 @@ export default function NewRecipeForm() {
         <option value={8}>8</option>
         <option value={9}>9</option>
         <option value={10}>10</option>
-      </select>
-      <input
-        placeholder="brew method"
-        onChange={(e) => setBrewMethod(e.target.value)}
-        required
-      />
+      </Select>
+      <Select onChange={(e) => setBrewMethod(e.target.value)} required>
+        <option value="" disabled selected>brew method</option>
+        <option value={"French Press"}>French Press</option>
+        <option value={"Drip"}>Drip</option>
+        <option value={"Pour Over"}>Pour Over</option>
+        <option value={"Cold Brew"}>Cold Brew</option>
+        <option value={"Cold Brew Bottle"}>Cold Brew Bottle</option>
+        <option value={"Siphon"}>Siphon</option>
+        <option value={"AeroPress"}>AeroPress</option>
+        <option value={"Bialetti"}>Bialetti</option>
+        <option value={"Chemex"}>Chemex</option>
+        <option value={"Espresso"}>Expresso</option>
+        <option value={"Milk & Art"}>Milk & Art</option>
+        <option value={"Nel Drip"}>Nel Drip</option>
+        <option value={"Iced"}>Iced</option>
+        <option value={"Other"}>Other</option>
+      </Select>
       <input
         placeholder="taste notes"
         onChange={(e) => setTasteNotes(e.target.value)}
         required
       />
-      <select onChange={(e) => setTags(e.target.value)} required>
-        <option value="">tags</option>
-        <option value={1}>light</option>
-        <option value={2}>medium</option>
-        <option value={3}>strong</option>
-        <option value={4}>extra strong</option>
-      </select>
+      <Select onChange={(e) => setTags(e.target.value)} required>
+        <option value="" disabled selected>tags</option>
+        <option value={"Light"}>Light</option>
+        <option value={"Medium"}>Medium</option>
+        <option value={"Strong"}>Strong</option>
+        <option value={"Extra Strong"}>Extra Strong</option>
+      </Select>
       <button type="submit">Submit</button>
       <p>{response}</p>
     </form>
