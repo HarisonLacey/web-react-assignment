@@ -23,7 +23,7 @@ export default function AllItems() {
         setItems(res.data);
         console.log(res.data);
       } catch (err) {
-        console.log(err.message);
+        console.log(err);
       }
     }
     fecthItems();
