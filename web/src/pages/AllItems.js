@@ -9,6 +9,7 @@ export default function AllItems() {
   const [searchItems, setSearchItems] = useState([]);
   const [type, setType] = useState("");
   const [reload, setReload] = useState(false);
+  const [filter, setFilter] = useState("");
   let { id } = useParams();
   let API_HOST = useContextWrapper();
   useEffect(() => {
@@ -60,15 +61,84 @@ export default function AllItems() {
     <div>
       {id === "recipes" && (
         <div>
-          <Select required id="bean_type" onChange={listFilter}>
+          <Select
+            required
+            onChange={(e) => {
+              setFilter(e.target.value);
+              setSearchItems([]);
+              setType("");
+            }}
+          >
             <option value="" disabled selected>
-              bean type
+              filter type
             </option>
-            <option value={"Robusta"}>Robusta</option>
-            <option value={"Liberica"}>Liberica</option>
-            <option value={"Arabica"}>Arabica</option>
-            <option value={"Other"}>Other</option>
+            <option value={"Bean Type"}>Bean Type</option>
+            <option value={"Brew Method"}>Brew Method</option>
+            <option value={"Strength"}>Strength</option>
           </Select>
+          {filter === "" && (
+            <div>
+              <Select
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                }}
+                required
+              >
+                <option value="" disabled selected>
+                  select filter option
+                </option>
+              </Select>
+            </div>
+          )}
+          {filter === "Bean Type" && (
+            <div>
+              <Select required id="bean_type" onChange={listFilter}>
+                <option value="" disabled selected>
+                  bean type
+                </option>
+                <option value={"Robusta"}>Robusta</option>
+                <option value={"Liberica"}>Liberica</option>
+                <option value={"Arabica"}>Arabica</option>
+                <option value={"Other"}>Other</option>
+              </Select>
+            </div>
+          )}
+          {filter === "Brew Method" && (
+            <div>
+              <Select required id="brew_method" onChange={listFilter}>
+                <option value="" disabled selected>
+                  brew method
+                </option>
+                <option value={"French Press"}>French Press</option>
+                <option value={"Drip"}>Drip</option>
+                <option value={"Pour Over"}>Pour Over</option>
+                <option value={"Cold Brew"}>Cold Brew</option>
+                <option value={"Cold Brew Bottle"}>Cold Brew Bottle</option>
+                <option value={"Siphon"}>Siphon</option>
+                <option value={"AeroPress"}>AeroPress</option>
+                <option value={"Bialetti"}>Bialetti</option>
+                <option value={"Chemex"}>Chemex</option>
+                <option value={"Espresso"}>Expresso</option>
+                <option value={"Milk & Art"}>Milk & Art</option>
+                <option value={"Nel Drip"}>Nel Drip</option>
+                <option value={"Iced"}>Iced</option>
+                <option value={"Other"}>Other</option>
+              </Select>
+            </div>
+          )}
+          {filter === "Strength" && (
+            <div>
+              <Select required id="strength" onChange={listFilter}>
+                <option value="" disabled selected>
+                  Strength
+                </option>
+                <option value={"Light"}>Light</option>
+                <option value={"Medium"}>Medium</option>
+                <option value={"Strong"}>Strong</option>
+                <option value={"Extra Strong"}>Extra Strong</option>
+              </Select>
+            </div>
+          )}
           <button
             onClick={() => {
               setSearchItems([]);
