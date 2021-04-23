@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
+// global style sheet
+
 // global style
 export const GlobalStyle = createGlobalStyle`
 `;

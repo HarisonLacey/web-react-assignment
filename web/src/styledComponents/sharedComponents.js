@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// shared styled component sheet
+
 // select component
 export const Select = styled.select`
   :invalid {
