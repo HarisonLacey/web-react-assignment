@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
+import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import axios from "axios";
 
 export default function SingleItem() {

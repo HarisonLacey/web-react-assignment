@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
+import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import axios from "axios";
 import { Select } from "../styledComponents/sharedComponents";
 

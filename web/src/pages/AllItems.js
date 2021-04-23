@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useContextWrapper } from "../cotenxtWrapper/contextWrapper";
+import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import { Select } from "../styledComponents/sharedComponents";
 
 export default function AllItems() {

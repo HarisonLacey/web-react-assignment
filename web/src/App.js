@@ -8,7 +8,7 @@ import Forms from "./pages/Forms";
 import AllItems from "./pages/AllItems";
 import SingleItem from "./pages/SingleItem";
 import DeleteItem from "./pages/Delete";
-import { ContextWrapper } from "./cotenxtWrapper/contextWrapper";
+import { ContextWrapper } from "./contextWrapper/contextWrapper";
 
 // api url
 const API_HOST = "http://localhost:8080";
