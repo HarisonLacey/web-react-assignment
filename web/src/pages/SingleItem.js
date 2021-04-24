@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function SingleItem() {
   const [item, setItem] = useState({});
   const [recipes, setRecipes] = useState([]);
-  let API_HOST = useContextWrapper();
+  let { api } = useContextWrapper();
   let { type, index } = useParams();
   useEffect(() => {
     async function Item() {
       switch (type) {
         case "recipes":
           try {
-            let res = await axios.get(`${API_HOST}/recipes/`, {
+            let res = await axios.get(`${api}/recipes/`, {
               headers: {
                 "Access-Control-Allow-Origin": "*",
               },
@@ -28,7 +29,7 @@ export default function SingleItem() {
           break;
         case "brewers":
           try {
-            let res = await axios.get(`${API_HOST}/brewers/${index}`, {
+            let res = await axios.get(`${api}/brewers/${index}`, {
               headers: {
                 "Access-Control-Allow-Origin": "*",
               },
@@ -45,14 +46,14 @@ export default function SingleItem() {
       }
     }
     Item();
-  }, [API_HOST, index, type]);
+  }, [api, index, type]);
   return (
     <div>
       {type === "recipes" && (
         <div>
           <p>{item.title}</p>
           <p>
-            <a href={`/brewers/${item.brewer_id}`}>Visit Brewer</a>
+            <Link to={`/brewers/${item.brewer_id}`}>Visit Brewer</Link>
           </p>
         </div>
       )}
@@ -62,7 +63,7 @@ export default function SingleItem() {
           <ul>
             {recipes.map((recipe) => (
               <li>
-                <a href={`/recipes/${recipe.id}`}>{recipe.title}</a>
+                <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
               </li>
             ))}
           </ul>

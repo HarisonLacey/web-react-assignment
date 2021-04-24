@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import { Select } from "../styledComponents/sharedComponents";
+import { Link } from "react-router-dom";
 
 export default function AllItems() {
   const [items, setItems] = useState([]);
@@ -11,11 +12,11 @@ export default function AllItems() {
   const [reload, setReload] = useState(false);
   const [filter, setFilter] = useState("");
   let { id } = useParams();
-  let API_HOST = useContextWrapper();
+  let { api } = useContextWrapper();
   useEffect(() => {
     async function fecthItems() {
       try {
-        let res = await axios.get(`${API_HOST}/${id}/`, {
+        let res = await axios.get(`${api}/${id}/`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
           },
@@ -27,7 +28,7 @@ export default function AllItems() {
       }
     }
     fecthItems();
-  }, [API_HOST, id, reload]);
+  }, [api, id, reload]);
   function listFilter(e) {
     switch (id) {
       case "recipes":
@@ -167,10 +168,10 @@ export default function AllItems() {
         <div>
           {items.map((e) => (
             <p>
-              <a href={`${id}/${e.id}`}>
+              <Link to={`/${id}/${e.id}`}>
                 {id === "recipes" && e.title}
                 {id === "brewers" && e.name}
-              </a>
+              </Link>
             </p>
           ))}
         </div>
@@ -184,10 +185,10 @@ export default function AllItems() {
         <div>
           {searchItems.map((e) => (
             <p>
-              <a href={`${id}/${e.id}`}>
+              <Link to={`/${id}/${e.id}`}>
                 {id === "recipes" && e.title}
                 {id === "brewers" && e.name}
-              </a>
+              </Link>
             </p>
           ))}
         </div>

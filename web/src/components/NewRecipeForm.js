@@ -17,12 +17,12 @@ export default function NewRecipeForm() {
   const [tasteNotes, setTasteNotes] = useState();
   const [tags, setTags] = useState();
   const [response, setResponse] = useState();
-  let API_HOST = useContextWrapper();
+  let { api } = useContextWrapper();
   // set required body and fetch recipe save api
   useEffect(() => {
     async function fecthBrewers() {
       try {
-        let res = await axios.get(`${API_HOST}/brewers/`, {
+        let res = await axios.get(`${api}/brewers/`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
           },
@@ -33,12 +33,12 @@ export default function NewRecipeForm() {
       }
     }
     fecthBrewers();
-  }, [API_HOST]);
+  }, [api]);
   async function formHandle(e) {
     e.preventDefault();
     try {
       await axios.post(
-        `${API_HOST}/brewers/${brewerId}/recipes/`,
+        `${api}/brewers/${brewerId}/recipes/`,
         {
           title: title,
           description: description,

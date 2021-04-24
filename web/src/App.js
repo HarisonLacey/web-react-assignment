@@ -19,7 +19,7 @@ export default function App() {
       {/* use global styles across website */}
       <GlobalStyle />
       {/* context wrapper to pass down data */}
-      <ContextWrapper data={API_HOST}>
+      <ContextWrapper data={{ api: API_HOST }}>
         {/* theme provider to pass down styles */}
         <ThemeProvider theme={themes}>
           <Layout>
