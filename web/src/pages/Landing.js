@@ -1,20 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
     <div>
-      <a href="new/brewer">
+      <Link to="/new/brewer">
         <button>Add New Brewer</button>
-      </a>
-      <a href="new/recipe">
+      </Link>
+      <Link to="/new/recipe">
         <button>Add New Recipe</button>
-      </a>
-      <a href="brewers">
+      </Link>
+      <Link to="/brewers">
         <button>Brewers</button>
-      </a>
-      <a href="recipes">
+      </Link>
+      <Link to="/recipes">
         <button>Recipes</button>
-      </a>
+      </Link>
     </div>
   );
 }
