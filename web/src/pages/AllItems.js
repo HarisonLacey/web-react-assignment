@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import { Select } from "../styledComponents/sharedComponents";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function AllItems() {
   const [items, setItems] = useState([]);
@@ -59,140 +60,147 @@ export default function AllItems() {
     }
   }
   return (
-    <div>
-      {id === "recipes" && (
-        <div>
-          <Select
-            required
-            onChange={(e) => {
-              setFilter(e.target.value);
-              setSearchItems([]);
-              setType("");
-            }}
-          >
-            <option value="" disabled selected>
-              filter type
-            </option>
-            <option value={"Bean Type"}>Bean Type</option>
-            <option value={"Brew Method"}>Brew Method</option>
-            <option value={"Strength"}>Strength</option>
-          </Select>
-          {filter === "" && (
-            <div>
+    <Container style={{ padding: "0" }} fluid>
+      <Row noGutters>
+        {/* filter options for recipes */}
+        <Col xs={6} md={4}>
+          {id === "recipes" && (
+            <>
               <Select
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                }}
                 required
+                onChange={(e) => {
+                  setFilter(e.target.value);
+                  setSearchItems([]);
+                  setType("");
+                }}
               >
                 <option value="" disabled selected>
-                  select filter option
+                  filter type
                 </option>
+                <option value={"Bean Type"}>Bean Type</option>
+                <option value={"Brew Method"}>Brew Method</option>
+                <option value={"Strength"}>Strength</option>
               </Select>
-            </div>
+              {filter === "" && (
+                <Select
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                  }}
+                  required
+                >
+                  <option value="" disabled selected>
+                    select filter option
+                  </option>
+                </Select>
+              )}
+              {filter === "Bean Type" && (
+                <Select required id="bean_type" onChange={listFilter}>
+                  <option value="" disabled selected>
+                    bean type
+                  </option>
+                  <option value={"Robusta"}>Robusta</option>
+                  <option value={"Liberica"}>Liberica</option>
+                  <option value={"Arabica"}>Arabica</option>
+                  <option value={"Other"}>Other</option>
+                </Select>
+              )}
+              {filter === "Brew Method" && (
+                <Select required id="brew_method" onChange={listFilter}>
+                  <option value="" disabled selected>
+                    brew method
+                  </option>
+                  <option value={"French Press"}>French Press</option>
+                  <option value={"Drip"}>Drip</option>
+                  <option value={"Pour Over"}>Pour Over</option>
+                  <option value={"Cold Brew"}>Cold Brew</option>
+                  <option value={"Cold Brew Bottle"}>Cold Brew Bottle</option>
+                  <option value={"Siphon"}>Siphon</option>
+                  <option value={"AeroPress"}>AeroPress</option>
+                  <option value={"Bialetti"}>Bialetti</option>
+                  <option value={"Chemex"}>Chemex</option>
+                  <option value={"Espresso"}>Expresso</option>
+                  <option value={"Milk & Art"}>Milk & Art</option>
+                  <option value={"Nel Drip"}>Nel Drip</option>
+                  <option value={"Iced"}>Iced</option>
+                  <option value={"Other"}>Other</option>
+                </Select>
+              )}
+              {filter === "Strength" && (
+                <Select required id="tags" onChange={listFilter}>
+                  <option value="" disabled selected>
+                    Strength
+                  </option>
+                  <option value={"Light"}>Light</option>
+                  <option value={"Medium"}>Medium</option>
+                  <option value={"Strong"}>Strong</option>
+                  <option value={"Extra Strong"}>Extra Strong</option>
+                </Select>
+              )}
+              <button
+                onClick={() => {
+                  setSearchItems([]);
+                  setType("");
+                }}
+              >
+                Reset
+              </button>
+            </>
           )}
-          {filter === "Bean Type" && (
-            <div>
-              <Select required id="bean_type" onChange={listFilter}>
+          {/* filter options for brewers */}
+          {id === "brewers" && (
+            <>
+              <Select required id="A" onChange={listFilter}>
                 <option value="" disabled selected>
-                  bean type
+                  sort
                 </option>
-                <option value={"Robusta"}>Robusta</option>
-                <option value={"Liberica"}>Liberica</option>
-                <option value={"Arabica"}>Arabica</option>
-                <option value={"Other"}>Other</option>
+                <option value={"A"}>A - Z</option>
+                <option value={"Z"}>Z - A</option>
               </Select>
-            </div>
+              <button
+                onClick={() => (reload ? setReload(false) : setReload(true))}
+              >
+                Reset
+              </button>
+            </>
           )}
-          {filter === "Brew Method" && (
-            <div>
-              <Select required id="brew_method" onChange={listFilter}>
-                <option value="" disabled selected>
-                  brew method
-                </option>
-                <option value={"French Press"}>French Press</option>
-                <option value={"Drip"}>Drip</option>
-                <option value={"Pour Over"}>Pour Over</option>
-                <option value={"Cold Brew"}>Cold Brew</option>
-                <option value={"Cold Brew Bottle"}>Cold Brew Bottle</option>
-                <option value={"Siphon"}>Siphon</option>
-                <option value={"AeroPress"}>AeroPress</option>
-                <option value={"Bialetti"}>Bialetti</option>
-                <option value={"Chemex"}>Chemex</option>
-                <option value={"Espresso"}>Expresso</option>
-                <option value={"Milk & Art"}>Milk & Art</option>
-                <option value={"Nel Drip"}>Nel Drip</option>
-                <option value={"Iced"}>Iced</option>
-                <option value={"Other"}>Other</option>
-              </Select>
-            </div>
-          )}
-          {filter === "Strength" && (
-            <div>
-              <Select required id="tags" onChange={listFilter}>
-                <option value="" disabled selected>
-                  Strength
-                </option>
-                <option value={"Light"}>Light</option>
-                <option value={"Medium"}>Medium</option>
-                <option value={"Strong"}>Strong</option>
-                <option value={"Extra Strong"}>Extra Strong</option>
-              </Select>
-            </div>
-          )}
-          <button
-            onClick={() => {
-              setSearchItems([]);
-              setType("");
-            }}
-          >
-            Reset
-          </button>
-        </div>
-      )}
-      {id === "brewers" && (
-        <div>
-          <Select required id="A" onChange={listFilter}>
-            <option value="" disabled selected>
-              sort
-            </option>
-            <option value={"A"}>A - Z</option>
-            <option value={"Z"}>Z - A</option>
-          </Select>
-          <button onClick={() => (reload ? setReload(false) : setReload(true))}>
-            Reset
-          </button>
-        </div>
-      )}
-      {searchItems.length === 0 && type === "" && (
-        <div>
-          {items.map((e) => (
-            <p>
-              <Link to={`/${id}/${e.id}`}>
-                {id === "recipes" && e.title}
-                {id === "brewers" && e.name}
-              </Link>
-            </p>
-          ))}
-        </div>
-      )}
-      {searchItems.length === 0 && type !== "" && (
-        <div>
-          <p>No results</p>
-        </div>
-      )}
-      {searchItems.length !== 0 && (
-        <div>
-          {searchItems.map((e) => (
-            <p>
-              <Link to={`/${id}/${e.id}`}>
-                {id === "recipes" && e.title}
-                {id === "brewers" && e.name}
-              </Link>
-            </p>
-          ))}
-        </div>
-      )}
-    </div>
+        </Col>
+        <Col xs={6} md={4}></Col>
+        <Col xs={6} md={4}></Col>
+        {/* display items section */}
+        {searchItems.length === 0 && type === "" && (
+          <>
+            {items.map((e) => (
+              <Col xs={6} md={4}>
+                <p>
+                  <Link to={`/${id}/${e.id}`}>
+                    {id === "recipes" && e.title}
+                    {id === "brewers" && e.name}
+                  </Link>
+                </p>
+              </Col>
+            ))}
+          </>
+        )}
+        {searchItems.length === 0 && type !== "" && (
+          <div>
+            <p>No results</p>
+          </div>
+        )}
+        {searchItems.length !== 0 && (
+          <>
+            {searchItems.map((e) => (
+              <Col xs={6} md={4}>
+                <p>
+                  <Link to={`/${id}/${e.id}`}>
+                    {id === "recipes" && e.title}
+                    {id === "brewers" && e.name}
+                  </Link>
+                </p>
+              </Col>
+            ))}
+          </>
+        )}
+      </Row>
+    </Container>
   );
 }
