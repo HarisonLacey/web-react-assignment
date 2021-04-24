@@ -7,13 +7,13 @@ import { useContextWrapper } from "../contextWrapper/contextWrapper";
 export default function NewBrewerForm() {
   const [name, setName] = useState();
   const [response, setResponse] = useState();
-  let API_HOST = useContextWrapper();
+  let { api } = useContextWrapper();
   // set name and response and fetch brewer save api
   async function formHandle(e) {
     e.preventDefault();
     try {
       await axios.post(
-        `${API_HOST}/brewers/`,
+        `${api}/brewers/`,
         {
           name: name,
         },
