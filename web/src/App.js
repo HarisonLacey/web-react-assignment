@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, themes } from "./styledComponents/globalStyles";
 import Landing from "./pages/Landing";
@@ -25,10 +25,10 @@ export default function App() {
           <Layout>
             <Switch>
               <Route path="/" component={Landing} exact />
-              <Route path="/new/:id" component={Forms} exact/>
-              <Route path="/:id" component={AllItems} exact/>
-              <Route path="/item/delete" component={DeleteItem} exact/>
-              <Route path="/:type/:index" component={SingleItem} exact/>
+              <Route path="/new/:id" component={Forms} exact />
+              <Route path="/:id" component={AllItems} exact />
+              <Route path="/item/delete" component={DeleteItem} exact />
+              <Route path="/:type/:index" component={SingleItem} exact />
             </Switch>
           </Layout>
         </ThemeProvider>
