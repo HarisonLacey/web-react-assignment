@@ -3,6 +3,8 @@ import Header from "./Header";
 import { Container, Row, Col } from "react-bootstrap";
 import facebook from "../assets/facebook.png";
 
+// layout component
+
 export default function Layout({ children }) {
   return (
     <>

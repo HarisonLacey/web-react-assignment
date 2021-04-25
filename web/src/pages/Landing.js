@@ -5,10 +5,13 @@ import man from "../assets/man.png";
 import earth from "../assets/earth.png";
 import cup from "../assets/cup.png";
 
+// landing page component
+
 export default function Landing() {
   return (
     <Container style={{ padding: "0" }} fluid>
       <Row noGutters>
+        {/* parallax */}
         <Col xs={12}>
           <div
             style={{
@@ -20,6 +23,7 @@ export default function Landing() {
             }}
           ></div>
         </Col>
+        {/* mission statement */}
         <Col
           md={6}
           style={{
@@ -31,7 +35,7 @@ export default function Landing() {
             padding: "2%",
           }}
         >
-          <h3 style={{ fontSize: "2.3em", fontFamily: "'Monoton', cursive" }}>
+          <h3 style={{ fontSize: "2.3em" }}>
             At Brewers Union our mission is simple;
             <br />
             <br />
@@ -39,6 +43,7 @@ export default function Landing() {
             world.
           </h3>
         </Col>
+        {/* site options and logos */}
         <Col
           md={6}
           style={{
@@ -58,7 +63,6 @@ export default function Landing() {
                 display: "flex",
                 alignItems: "center",
                 paddingLeft: "3%",
-                fontFamily: "'Monoton', cursive",
               }}
             >
               <h2>Become a Brewer</h2>
@@ -73,7 +77,6 @@ export default function Landing() {
                 display: "flex",
                 alignItems: "center",
                 paddingLeft: "3%",
-                fontFamily: "'Monoton', cursive",
               }}
             >
               <h2>Create a Recipe</h2>
@@ -88,7 +91,6 @@ export default function Landing() {
                 display: "flex",
                 alignItems: "center",
                 paddingLeft: "3%",
-                fontFamily: "'Monoton', cursive",
               }}
             >
               <h2>Share it with the World</h2>
@@ -96,6 +98,7 @@ export default function Landing() {
             <Col xs={2}></Col>
           </Row>
         </Col>
+        {/* parallax */}
         <Col xs={12}>
           <div
             style={{

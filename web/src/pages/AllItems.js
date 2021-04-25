@@ -10,18 +10,23 @@ import {
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
+// page to display either all the brewers or all the recipes depending on url id
+
 export default function AllItems() {
   const [items, setItems] = useState([]);
   const [searchItems, setSearchItems] = useState([]);
   const [type, setType] = useState("");
   const [reload, setReload] = useState(false);
   const [filter, setFilter] = useState("");
-  let { id } = useParams();
-  let { api } = useContextWrapper();
+  // get url id from params
+  const { id } = useParams();
+  // get api url from context
+  const { api } = useContextWrapper();
+  // fetch either all the brewers or recipes depending on url params
   useEffect(() => {
     async function fecthItems() {
       try {
-        let res = await axios.get(`${api}/${id}/`, {
+        const res = await axios.get(`${api}/${id}/`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
           },
@@ -38,8 +43,10 @@ export default function AllItems() {
     setSearchItems([]);
     setType("");
   }, [id]);
+  // function to filter items
   function listFilter(e) {
     switch (id) {
+      // filter for recipes
       case "recipes":
         let array = [];
         items.forEach((recipe) => {
@@ -48,6 +55,7 @@ export default function AllItems() {
         setSearchItems(array);
         setType(e.target.id);
         break;
+      // filter for brewers
       case "brewers":
         setSearchItems([]);
         setType("");
@@ -79,13 +87,14 @@ export default function AllItems() {
     >
       <Row noGutters>
         <Col xs={12}>
-          <h2 style={{ fontFamily: '"Monoton", cursive' }}>{id}</h2>
+          <h2>{id}</h2>
           <hr style={{ border: "solid 2px" }} />
         </Col>
         {/* filter options for recipes */}
         <Col md={8} lg={6}>
           {id === "recipes" && (
             <>
+              {/* set filter type */}
               <Select
                 size="1.2em"
                 inline
@@ -118,6 +127,7 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Bean Type" && (
+                // filter by bean type
                 <Select
                   size="1.2em"
                   inline
@@ -135,6 +145,7 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Brew Method" && (
+                // filter by brew method
                 <Select
                   size="1.2em"
                   inline
@@ -162,6 +173,7 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Strength" && (
+                // filter by strength
                 <Select
                   size="1.2em"
                   inline
@@ -178,6 +190,7 @@ export default function AllItems() {
                   <option value={"Extra Strong"}>Extra Strong</option>
                 </Select>
               )}
+              {/* reset page */}
               <Button
                 style={{ width: "20%", border: "none" }}
                 onClick={() => {
@@ -191,6 +204,7 @@ export default function AllItems() {
           )}
           {/* filter options for brewers */}
           {id === "brewers" && (
+            // filter ascending or descending alphabetically
             <>
               <Select size="1.2em" inline required id="A" onChange={listFilter}>
                 <option value="" disabled selected>

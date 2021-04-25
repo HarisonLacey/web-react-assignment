@@ -45,6 +45,7 @@ export const Select = styled.select.attrs(({ inline, size }) => ({
   }
 `;
 
+// button component
 export const Button = styled.button.attrs(({ height }) => ({
   height: height || "1.5em",
 }))`
@@ -65,6 +66,8 @@ export const Button = styled.button.attrs(({ height }) => ({
     color: whitesmoke;
   }
 `;
+
+// item display thumbnails
 export const ItemDisplay = styled.div`
   width: 90%;
   font-family: "Monoton", cursive;

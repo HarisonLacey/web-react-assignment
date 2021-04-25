@@ -9,6 +9,7 @@ import NewRecipeForm from "../components/NewRecipeForm";
 // render either the form to create a new brewer or recipe based on the url param id
 export default function Forms() {
   const [formRender, setFormRender] = useState();
+  // get url param
   const { id } = useParams();
   useEffect(() => {
     setFormRender(id);

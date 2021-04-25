@@ -5,7 +5,7 @@ import axios from "axios";
 import { Select, Form, Button } from "../styledComponents/sharedComponents";
 import { Container, Row, Col } from "react-bootstrap";
 
-// new recipe form
+// new recipe submit form
 
 export default function NewRecipeForm() {
   const [brewers, setBrewers] = useState([]);
@@ -18,12 +18,13 @@ export default function NewRecipeForm() {
   const [tasteNotes, setTasteNotes] = useState();
   const [tags, setTags] = useState();
   const [response, setResponse] = useState();
-  let { api } = useContextWrapper();
-  // set required body and fetch recipe save api
+  // get api url from context
+  const { api } = useContextWrapper();
+  // fetch all the current brewers to display in form
   useEffect(() => {
     async function fecthBrewers() {
       try {
-        let res = await axios.get(`${api}/brewers/`, {
+        const res = await axios.get(`${api}/brewers/`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
           },
@@ -35,6 +36,7 @@ export default function NewRecipeForm() {
     }
     fecthBrewers();
   }, [api]);
+  // set required body and fetch recipe save api
   async function formHandle(e) {
     setResponse("One second...");
     e.preventDefault();
@@ -89,12 +91,12 @@ export default function NewRecipeForm() {
             </Select>
             <textarea
               cols="50"
-              placeholder="title"
+              placeholder="Title"
               onChange={(e) => setTitle(e.target.value)}
             ></textarea>
             <textarea
               cols="50"
-              placeholder="description"
+              placeholder="Description"
               onChange={(e) => setDescription(e.target.value)}
               required
             ></textarea>
@@ -143,7 +145,7 @@ export default function NewRecipeForm() {
             </Select>
             <textarea
               cols="50"
-              placeholder="taste notes"
+              placeholder="Taste Notes"
               onChange={(e) => setTasteNotes(e.target.value)}
               required
             ></textarea>

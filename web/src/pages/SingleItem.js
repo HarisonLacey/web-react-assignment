@@ -17,19 +17,23 @@ import strength from "../assets/strength.png";
 export default function SingleItem() {
   const [item, setItem] = useState({});
   const [recipes, setRecipes] = useState([]);
-  let { api } = useContextWrapper();
-  let { type, index } = useParams();
+  // get api url from context
+  const { api } = useContextWrapper();
+  // get param id from url
+  const { type, index } = useParams();
+  // fetch either single brewer or recipe based on params
   useEffect(() => {
     async function Item() {
+      // find single recipe by id
       switch (type) {
         case "recipes":
           try {
-            let res = await axios.get(`${api}/recipes/`, {
+            const res = await axios.get(`${api}/recipes/`, {
               headers: {
                 "Access-Control-Allow-Origin": "*",
               },
             });
-            let itemFind = await res.data.find(
+            const itemFind = await res.data.find(
               ({ id }) => id === parseInt(index)
             );
             setItem(itemFind);
@@ -37,9 +41,10 @@ export default function SingleItem() {
             console.log(err.message);
           }
           break;
+        // find single recipe by id
         case "brewers":
           try {
-            let res = await axios.get(`${api}/brewers/${index}`, {
+            const res = await axios.get(`${api}/brewers/${index}`, {
               headers: {
                 "Access-Control-Allow-Origin": "*",
               },
@@ -69,9 +74,10 @@ export default function SingleItem() {
     >
       <Row noGutters>
         {type === "recipes" && (
+          // display single recipe items
           <>
             <Col xs={12} style={{ textAlign: "center" }}>
-              <h2 style={{ fontFamily: '"Monoton", cursive' }}>{item.title}</h2>
+              <h2>{item.title}</h2>
               <hr style={{ border: "solid 2px" }} />
             </Col>
             <Col xs={12}>
@@ -85,7 +91,6 @@ export default function SingleItem() {
                     display: "flex",
                     alignItems: "center",
                     paddingLeft: "3%",
-                    fontFamily: "'Monoton', cursive",
                   }}
                 >
                   <h2>{item.description}</h2>
@@ -100,7 +105,6 @@ export default function SingleItem() {
                     display: "flex",
                     alignItems: "center",
                     paddingLeft: "3%",
-                    fontFamily: "'Monoton', cursive",
                   }}
                 >
                   <h2>{item.bean_type}</h2>
@@ -115,7 +119,6 @@ export default function SingleItem() {
                     display: "flex",
                     alignItems: "center",
                     paddingLeft: "3%",
-                    fontFamily: "'Monoton', cursive",
                   }}
                 >
                   <h2>{item.brew_time} minutes</h2>
@@ -130,7 +133,6 @@ export default function SingleItem() {
                     display: "flex",
                     alignItems: "center",
                     paddingLeft: "3%",
-                    fontFamily: "'Monoton', cursive",
                   }}
                 >
                   <h2>{item.brew_method}</h2>
@@ -145,7 +147,6 @@ export default function SingleItem() {
                     display: "flex",
                     alignItems: "center",
                     paddingLeft: "3%",
-                    fontFamily: "'Monoton', cursive",
                   }}
                 >
                   <h2>{item.taste_notes}</h2>
@@ -160,7 +161,6 @@ export default function SingleItem() {
                     display: "flex",
                     alignItems: "center",
                     paddingLeft: "3%",
-                    fontFamily: "'Monoton', cursive",
                   }}
                 >
                   <h2>{item.tags}</h2>
@@ -171,6 +171,7 @@ export default function SingleItem() {
             <Col xs={12}>
               <hr style={{ border: "solid 2px" }} />
             </Col>
+            {/* link to brewer who owns recipe */}
             <Col xs={12} style={{ textAlign: "center" }}>
               <Link to={`/brewers/${item.brewer_id}`}>
                 <Button height="50px" style={{ width: "30%", height: "50px" }}>
@@ -181,22 +182,18 @@ export default function SingleItem() {
           </>
         )}
         {type === "brewers" && (
+          // display single brewer item
           <>
             <Col xs={12} style={{ textAlign: "center" }}>
-              <h2
-                style={{
-                  fontFamily: '"Monoton", cursive',
-                }}
-              >
-                {item.name}
-              </h2>
+              <h2>{item.name}</h2>
               <hr style={{ border: "solid 2px" }} />
             </Col>
             <Col xs={12} style={{ textAlign: "center" }}>
-              <h2 style={{ fontFamily: '"Monoton", cursive' }}>Recipes</h2>
+              <h2>Recipes</h2>
             </Col>
             <>
               {recipes.map((recipe) => (
+                // map all the recipes the brewer owns
                 <Col sm={6} md={4} style={{ padding: "10px 0" }}>
                   <Link to={`/recipes/${recipe.id}`}>
                     <ItemDisplay>

@@ -2,11 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 // global style sheet
 
-// global style
+// global styles
 export const GlobalStyle = createGlobalStyle`
 body {
   background-color: #314e52;
-  font-family: 'Lobster', cursive;
+  font-family: "Monoton", cursive; 
 }
 a:hover {
   text-decoration: none;
@@ -20,8 +20,4 @@ export const themes = {
     secondary: "#ffefa0",
     thirdly: "whitesmoke",
   },
-  fonts: {
-
-  }
 };
-

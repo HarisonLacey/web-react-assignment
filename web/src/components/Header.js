@@ -8,6 +8,7 @@ import close from "../assets/close.png";
 
 // header and menu component
 
+// styled menu container
 const MenuContainer = styled.div.attrs(({ height, menu }) => ({
   top: height ? "50px" : "110px",
   width: menu ? "40%" : "0",
@@ -16,26 +17,26 @@ const MenuContainer = styled.div.attrs(({ height, menu }) => ({
 }))`
   height: 100%;
   width: ${({ width }) => width};
-  background-color: #ffefa0;
+  background-color: ${({ theme }) => theme.colors.secondary};
   position: fixed;
   top: ${({ top }) => top};
   opacity: ${({ op }) => op};
   transition: 0.5s width, 0.5s opacity;
   z-index: 3;
-  font-family: "Monoton", cursive;
   text-decoration: none;
   a {
-    color: #314e52;
+    color: ${({ theme }) => theme.colors.primary};
     padding: 0 0 20px 5px;
     font-size: 2em;
     display: ${({ hide }) => hide};
   }
   a:hover {
     text-decoration: ;
-    color: whitesmoke;
+    color: ${({ theme }) => theme.colors.thirdly};
   }
 `;
 
+// styled header container
 const HeaderContainer = styled.div.attrs(({ height }) => ({
   height: height ? "50px" : "110px",
   display: height ? "none" : "block",
@@ -44,14 +45,14 @@ const HeaderContainer = styled.div.attrs(({ height }) => ({
   height: ${({ height }) => height};
   width: 100%;
   position: fixed;
-  background-color: #314e52;
+  background-color: ${({ theme }) => theme.colors.primary};
   overflow: hidden;
   top: 0;
   z-index: 2;
   h2 {
     font-family: "Lobster", cursive;
     font-size: 2.5em;
-    color: #ffefa0;
+    color: ${({ theme }) => theme.colors.secondary};
     display: ${({ display }) => display};
   }
   img {
@@ -59,10 +60,12 @@ const HeaderContainer = styled.div.attrs(({ height }) => ({
   }
 `;
 
+// header component
 export default function Header() {
   const [height, setHeight] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [menuIcon, setMenuIcon] = useState(menu);
+  // menu items with url links
   const menuItems = [
     { path: "/", name: "Home" },
     { path: "/recipes", name: "Recipes" },
@@ -70,6 +73,7 @@ export default function Header() {
     { path: "/new/brewer", name: "New Brewer" },
     { path: "/new/recipe", name: "New Recipe" },
   ];
+  // listener to adjust header height on scroll
   useEffect(() => {
     window.addEventListener("scroll", () => {
       document.documentElement.scrollTop > 70
@@ -79,6 +83,7 @@ export default function Header() {
   }, []);
   return (
     <>
+      {/* header container */}
       <HeaderContainer height={height}>
         <Container fluid>
           <Row noGutters>
@@ -105,7 +110,9 @@ export default function Header() {
           </Row>
         </Container>
       </HeaderContainer>
+      {/* menu container */}
       <MenuContainer height={height} menu={showMenu}>
+        {/* map menu items */}
         {menuItems.map((e) => (
           <NavLink
             onClick={() => {
