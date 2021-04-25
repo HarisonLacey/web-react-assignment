@@ -33,10 +33,10 @@ export default function NewBrewerForm() {
   }
   return (
     // new brewer save form
-    <Container fluid>
+    <Container style={{ padding: "50px 0 0" }} fluid>
       <Row noGutters>
         <Col sm={3} lg={4}></Col>
-        <Col xs={12} sm={6} lg={4}>
+        <Col sm={6} lg={4}>
           <Form onSubmit={formHandle}>
             <input
               placeholder="Brewer Name"

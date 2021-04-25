@@ -63,10 +63,10 @@ export default function NewRecipeForm() {
   }
   return (
     // new recipe save form
-    <Container fluid>
+    <Container style={{ padding: "50px 0 0" }} fluid>
       <Row noGutters>
         <Col sm={3} lg={4}></Col>
-        <Col xs={12} sm={6} lg={4}>
+        <Col sm={6} lg={4}>
           <Form onSubmit={formHandle}>
             <Select onChange={(e) => setBrewerId(e.target.value)} required>
               <option key={0} value="" disabled selected>
