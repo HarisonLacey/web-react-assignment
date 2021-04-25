@@ -12,6 +12,8 @@ import method from "../assets/method.png";
 import notes from "../assets/note.png";
 import strength from "../assets/strength.png";
 
+// single item page
+
 export default function SingleItem() {
   const [item, setItem] = useState({});
   const [recipes, setRecipes] = useState([]);
