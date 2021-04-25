@@ -79,17 +79,13 @@ export default function SingleItem() {
             </Col>
             <Col sm={3} lg={4}></Col>
             <Col sm={3} lg={4}></Col>
-            <Col sm={6} lg={4}>
-              <ul>
-                {recipes.map((recipe) => (
-                  <li>
-                    <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-            <Col sm={3} lg={4}></Col>
-            <Col sm={3} lg={4}></Col>
+            <>
+              {recipes.map((recipe) => (
+                <Col xs={6} md={4}>
+                  <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
+                </Col>
+              ))}
+            </>
           </>
         )}
       </Row>
