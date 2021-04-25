@@ -22,7 +22,7 @@ export default function Layout({ children }) {
                 display: "flex",
                 alignItems: "center",
                 padding: "5px 0",
-                height: "100px"
+                height: "100px",
               }}
             >
               <img style={{ margin: "0 auto" }} src={facebook} />

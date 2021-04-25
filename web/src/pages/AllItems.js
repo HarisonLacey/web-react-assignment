@@ -9,6 +9,7 @@ import {
 } from "../styledComponents/sharedComponents";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 // page to display either all the brewers or all the recipes depending on url id
 
@@ -85,6 +86,9 @@ export default function AllItems() {
       }}
       fluid
     >
+      <Helmet>
+        <title>{id}</title>
+      </Helmet>
       <Row noGutters>
         <Col xs={12}>
           <h2>{id}</h2>
@@ -243,9 +247,9 @@ export default function AllItems() {
           </>
         )}
         {searchItems.length === 0 && type !== "" && (
-          <div>
-            <h3 style={{ fontFamily: '"Monoton", cursive' }}>No results</h3>
-          </div>
+          <Col style={{ textAlign: "center", paddingTop: "20px", height: "500px" }}>
+            <h3>No results</h3>
+          </Col>
         )}
         {searchItems.length !== 0 && (
           <>

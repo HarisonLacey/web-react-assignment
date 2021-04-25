@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, themes } from "./styledComponents/globalStyles";
 import Landing from "./pages/Landing";

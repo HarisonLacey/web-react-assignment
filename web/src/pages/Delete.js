@@ -6,10 +6,10 @@ import { Select } from "../styledComponents/sharedComponents";
 export default function DeleteItem() {
   const [item, setItem] = useState();
   const [id, setId] = useState();
-  let API_HOST = useContextWrapper();
+  let { api } = useContextWrapper();
   async function deleteItems() {
     try {
-      let res = await axios.delete(`${API_HOST}/${item}/${id}`, {
+      let res = await axios.delete(`${api}/${item}/${id}`, {
         headers: {
           "Access-Control-Allow-Origin": "*",
         },

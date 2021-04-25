@@ -72,6 +72,7 @@ export default function NewRecipeForm() {
         paddingBottom: "50px",
         backgroundColor: "whitesmoke",
         overflow: "auto",
+        textAlign: "center",
       }}
       fluid
     >
@@ -111,7 +112,7 @@ export default function NewRecipeForm() {
             </Select>
             <Select onChange={(e) => setBrewTime(e.target.value)} required>
               <option value="" disabled selected>
-                Brew Time
+                Brew Time Mins
               </option>
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -159,7 +160,7 @@ export default function NewRecipeForm() {
               <option value={"Extra Strong"}>Extra Strong</option>
             </Select>
             <Button type="submit">Submit</Button>
-            <h3>{response}</h3>
+            <h3 style={{ margin: "0 auto" }}>{response}</h3>
           </Form>
         </Col>
         <Col sm={3} lg={4}></Col>

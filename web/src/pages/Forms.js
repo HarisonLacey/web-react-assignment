@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import NewBrewerForm from "../components/NewBrewerForm";
 import NewRecipeForm from "../components/NewRecipeForm";
+import { Helmet } from "react-helmet";
 
 // new brewer or recipe page
 
@@ -16,6 +17,9 @@ export default function Forms() {
   }, [id]);
   return (
     <>
+      <Helmet>
+        <title>new {id}</title>
+      </Helmet>
       {formRender === "brewer" && <NewBrewerForm />}
       {formRender === "recipe" && <NewRecipeForm />}
     </>

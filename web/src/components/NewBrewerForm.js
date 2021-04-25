@@ -39,7 +39,8 @@ export default function NewBrewerForm() {
         paddingTop: "50px",
         paddingBottom: "50px",
         backgroundColor: "whitesmoke",
-        overflow: "auto",
+        height: "500px",
+        textAlign: "center",
       }}
       fluid
     >
@@ -50,9 +51,10 @@ export default function NewBrewerForm() {
             <input
               placeholder="Brewer Name"
               onChange={(e) => setName(e.target.value)}
+              required
             />
             <Button type="submit">Submit</Button>
-            <h3>{response}</h3>
+            <h3 style={{ margin: "0 auto" }}>{response}</h3>
           </Form>
         </Col>
         <Col sm={3} lg={4}></Col>

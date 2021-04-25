@@ -31,8 +31,7 @@ const MenuContainer = styled.div.attrs(({ height, menu }) => ({
     display: ${({ hide }) => hide};
   }
   a:hover {
-    text-decoration: ;
-    color: ${({ theme }) => theme.colors.thirdly};
+    background-color: ${({ theme }) => theme.colors.thirdly};
   }
 `;
 

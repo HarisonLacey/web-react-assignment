@@ -11,6 +11,7 @@ import time from "../assets/clock.png";
 import method from "../assets/method.png";
 import notes from "../assets/note.png";
 import strength from "../assets/strength.png";
+import { Helmet } from "react-helmet";
 
 // single item page
 
@@ -72,6 +73,9 @@ export default function SingleItem() {
       }}
       fluid
     >
+      <Helmet>
+        <title>{type}</title>
+      </Helmet>
       <Row noGutters>
         {type === "recipes" && (
           // display single recipe items

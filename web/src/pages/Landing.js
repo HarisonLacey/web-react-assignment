@@ -4,12 +4,16 @@ import banner from "../assets/banner.jpg";
 import man from "../assets/man.png";
 import earth from "../assets/earth.png";
 import cup from "../assets/cup.png";
+import { Helmet } from "react-helmet";
 
 // landing page component
 
 export default function Landing() {
   return (
     <Container style={{ padding: "0" }} fluid>
+      <Helmet>
+        <title>Brewers Union</title>
+      </Helmet>
       <Row noGutters>
         {/* parallax */}
         <Col xs={12}>
