@@ -14,9 +14,9 @@ export default function Forms() {
     setFormRender(id);
   }, [id]);
   return (
-    <div>
+    <>
       {formRender === "brewer" && <NewBrewerForm />}
       {formRender === "recipe" && <NewRecipeForm />}
-    </div>
+    </>
   );
 }
