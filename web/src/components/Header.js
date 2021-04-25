@@ -11,7 +11,7 @@ import close from "../assets/close.png";
 const MenuContainer = styled.div.attrs(({ height, menu }) => ({
   top: height ? "50px" : "110px",
   width: menu ? "40%" : "0",
-  op: menu ? "90%" : "0",
+  op: menu ? "100%" : "0",
   hide: menu ? "block" : "none",
 }))`
   height: 100%;
@@ -22,17 +22,16 @@ const MenuContainer = styled.div.attrs(({ height, menu }) => ({
   opacity: ${({ op }) => op};
   transition: 0.5s width, 0.5s opacity;
   z-index: 3;
-  font-family: "Fredoka One", cursive;
+  font-family: "Monoton", cursive;
   text-decoration: none;
-  h3 {
-    display: ${({ hide }) => hide};
-    padding: 0 0 10px 5px;
-  }
   a {
     color: #314e52;
+    padding: 0 0 20px 5px;
+    font-size: 2em;
+    display: ${({ hide }) => hide};
   }
   a:hover {
-    text-decoration: none;
+    text-decoration: ;
     color: whitesmoke;
   }
 `;
@@ -73,7 +72,7 @@ export default function Header() {
   ];
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      document.documentElement.scrollTop > 100
+      document.documentElement.scrollTop > 70
         ? setHeight(true)
         : setHeight(false);
     });
@@ -108,24 +107,21 @@ export default function Header() {
       </HeaderContainer>
       <MenuContainer height={height} menu={showMenu}>
         {menuItems.map((e) => (
-          <h3
+          <NavLink
             onClick={() => {
               setShowMenu(false);
               setMenuIcon(menu);
             }}
+            to={e.path}
+            exact
+            activeStyle={{ display: "none" }}
+            isActive={(match) => {
+              if (!match) return false;
+              return true;
+            }}
           >
-            <NavLink
-              to={e.path}
-              exact
-              activeStyle={{ display: "none" }}
-              isActive={(match) => {
-                if (!match) return false;
-                return true;
-              }}
-            >
-              {e.name}
-            </NavLink>
-          </h3>
+            {e.name}
+          </NavLink>
         ))}
       </MenuContainer>
     </>

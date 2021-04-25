@@ -9,7 +9,6 @@ import {
 } from "../styledComponents/sharedComponents";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import thumbnail from "../assets/thumbnail.jpg";
 
 export default function AllItems() {
   const [items, setItems] = useState([]);
@@ -70,15 +69,25 @@ export default function AllItems() {
   }
   return (
     <Container
-      style={{ paddingTop: "50px", backgroundColor: "whitesmoke" }}
+      style={{
+        paddingTop: "50px",
+        paddingBottom: "50px",
+        backgroundColor: "whitesmoke",
+        overflow: "auto",
+      }}
       fluid
     >
       <Row noGutters>
+        <Col xs={12}>
+          <h2 style={{ fontFamily: '"Monoton", cursive' }}>{id}</h2>
+          <hr style={{ border: "solid 2px" }} />
+        </Col>
         {/* filter options for recipes */}
         <Col md={8} lg={6}>
           {id === "recipes" && (
             <>
               <Select
+                size="1.2em"
                 inline
                 required
                 onChange={(e) => {
@@ -96,6 +105,7 @@ export default function AllItems() {
               </Select>
               {filter === "" && (
                 <Select
+                  size="1.2em"
                   inline
                   onMouseDown={(e) => {
                     e.preventDefault();
@@ -103,12 +113,18 @@ export default function AllItems() {
                   required
                 >
                   <option value="" disabled selected>
-                    select filter option
+                    select filter first
                   </option>
                 </Select>
               )}
               {filter === "Bean Type" && (
-                <Select inline required id="bean_type" onChange={listFilter}>
+                <Select
+                  size="1.2em"
+                  inline
+                  required
+                  id="bean_type"
+                  onChange={listFilter}
+                >
                   <option value="" disabled selected>
                     bean type
                   </option>
@@ -119,7 +135,13 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Brew Method" && (
-                <Select inline required id="brew_method" onChange={listFilter}>
+                <Select
+                  size="1.2em"
+                  inline
+                  required
+                  id="brew_method"
+                  onChange={listFilter}
+                >
                   <option value="" disabled selected>
                     brew method
                   </option>
@@ -140,7 +162,13 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Strength" && (
-                <Select inline required id="tags" onChange={listFilter}>
+                <Select
+                  size="1.2em"
+                  inline
+                  required
+                  id="tags"
+                  onChange={listFilter}
+                >
                   <option value="" disabled selected>
                     Strength
                   </option>
@@ -151,7 +179,7 @@ export default function AllItems() {
                 </Select>
               )}
               <Button
-                style={{ width: "20%" }}
+                style={{ width: "20%", border: "none" }}
                 onClick={() => {
                   setSearchItems([]);
                   setType("");
@@ -164,7 +192,7 @@ export default function AllItems() {
           {/* filter options for brewers */}
           {id === "brewers" && (
             <>
-              <Select inline required id="A" onChange={listFilter}>
+              <Select size="1.2em" inline required id="A" onChange={listFilter}>
                 <option value="" disabled selected>
                   sort
                 </option>
@@ -172,6 +200,7 @@ export default function AllItems() {
                 <option value={"Z"}>Z - A</option>
               </Select>
               <Button
+                style={{ width: "20%", border: "none" }}
                 onClick={() => (reload ? setReload(false) : setReload(true))}
               >
                 Reset
@@ -201,7 +230,7 @@ export default function AllItems() {
         )}
         {searchItems.length === 0 && type !== "" && (
           <div>
-            <p>No results</p>
+            <h3 style={{ fontFamily: '"Monoton", cursive' }}>No results</h3>
           </div>
         )}
         {searchItems.length !== 0 && (

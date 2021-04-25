@@ -19,7 +19,7 @@ export default function Layout({ children }) {
               style={{
                 display: "flex",
                 alignItems: "center",
-                paddingTop: "5px",
+                padding: "5px 0",
                 height: "100px"
               }}
             >
