@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useContextWrapper } from "../contextWrapper/contextWrapper";
-import { Select } from "../styledComponents/sharedComponents";
+import {
+  Select,
+  Button,
+  ItemDisplay,
+} from "../styledComponents/sharedComponents";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import thumbnail from "../assets/thumbnail.jpg";
 
 export default function AllItems() {
   const [items, setItems] = useState([]);
@@ -64,7 +69,10 @@ export default function AllItems() {
     }
   }
   return (
-    <Container style={{ padding: "50px 0 0" }} fluid>
+    <Container
+      style={{ paddingTop: "50px", backgroundColor: "whitesmoke" }}
+      fluid
+    >
       <Row noGutters>
         {/* filter options for recipes */}
         <Col md={8} lg={6}>
@@ -142,7 +150,7 @@ export default function AllItems() {
                   <option value={"Extra Strong"}>Extra Strong</option>
                 </Select>
               )}
-              <button
+              <Button
                 style={{ width: "20%" }}
                 onClick={() => {
                   setSearchItems([]);
@@ -150,7 +158,7 @@ export default function AllItems() {
                 }}
               >
                 Reset
-              </button>
+              </Button>
             </>
           )}
           {/* filter options for brewers */}
@@ -163,30 +171,30 @@ export default function AllItems() {
                 <option value={"A"}>A - Z</option>
                 <option value={"Z"}>Z - A</option>
               </Select>
-              <button
+              <Button
                 onClick={() => (reload ? setReload(false) : setReload(true))}
               >
                 Reset
-              </button>
+              </Button>
             </>
           )}
         </Col>
         <Col md={2} lg={3}></Col>
         <Col md={2} lg={3}></Col>
-        <Col xs={12}>
-          ---------------------------------------------------------------------------------------
-        </Col>
+        <Col xs={12}></Col>
         {/* display items section */}
         {searchItems.length === 0 && type === "" && (
           <>
             {items.map((e) => (
-              <Col xs={6} md={4}>
-                <p>
-                  <Link to={`/${id}/${e.id}`}>
-                    {id === "recipes" && e.title}
-                    {id === "brewers" && e.name}
-                  </Link>
-                </p>
+              <Col sm={6} md={4} style={{ padding: "10px 0" }}>
+                <Link to={`/${id}/${e.id}`}>
+                  <ItemDisplay>
+                    <h2>
+                      {id === "recipes" && e.title}
+                      {id === "brewers" && e.name}
+                    </h2>
+                  </ItemDisplay>
+                </Link>
               </Col>
             ))}
           </>
@@ -199,13 +207,15 @@ export default function AllItems() {
         {searchItems.length !== 0 && (
           <>
             {searchItems.map((e) => (
-              <Col xs={6} md={4}>
-                <p>
-                  <Link to={`/${id}/${e.id}`}>
-                    {id === "recipes" && e.title}
-                    {id === "brewers" && e.name}
-                  </Link>
-                </p>
+              <Col sm={6} md={4} style={{ padding: "10px 0" }}>
+                <Link to={`/${id}/${e.id}`}>
+                  <ItemDisplay>
+                    <h2>
+                      {id === "recipes" && e.title}
+                      {id === "brewers" && e.name}
+                    </h2>
+                  </ItemDisplay>
+                </Link>
               </Col>
             ))}
           </>
