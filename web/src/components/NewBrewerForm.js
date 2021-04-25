@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import { Container, Row, Col } from "react-bootstrap";
-import { Form } from "../styledComponents/sharedComponents";
+import { Form, Button } from "../styledComponents/sharedComponents";
 
 // new brewer form
 
@@ -33,7 +33,7 @@ export default function NewBrewerForm() {
   }
   return (
     // new brewer save form
-    <Container style={{ padding: "50px 0 0" }} fluid>
+    <Container style={{ padding: "50px 0 0", backgroundColor: "whitesmoke", height: "470px" }} fluid>
       <Row noGutters>
         <Col sm={3} lg={4}></Col>
         <Col sm={6} lg={4}>
@@ -42,7 +42,7 @@ export default function NewBrewerForm() {
               placeholder="Brewer Name"
               onChange={(e) => setName(e.target.value)}
             />
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
             <p>{response}</p>
           </Form>
         </Col>

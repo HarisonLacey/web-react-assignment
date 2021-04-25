@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import axios from "axios";
-import { Select, Form } from "../styledComponents/sharedComponents";
+import { Select, Form, Button } from "../styledComponents/sharedComponents";
 import { Container, Row, Col } from "react-bootstrap";
 
 // new recipe form
@@ -63,7 +63,7 @@ export default function NewRecipeForm() {
   }
   return (
     // new recipe save form
-    <Container style={{ padding: "50px 0 0" }} fluid>
+    <Container style={{ padding: "50px 0 0", backgroundColor: "whitesmoke" }} fluid>
       <Row noGutters>
         <Col sm={3} lg={4}></Col>
         <Col sm={6} lg={4}>
@@ -147,7 +147,7 @@ export default function NewRecipeForm() {
               <option value={"Strong"}>Strong</option>
               <option value={"Extra Strong"}>Extra Strong</option>
             </Select>
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
             <p>{response}</p>
           </Form>
         </Col>
