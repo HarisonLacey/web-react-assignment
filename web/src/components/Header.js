@@ -11,19 +11,29 @@ import close from "../assets/close.png";
 const MenuContainer = styled.div.attrs(({ height, menu }) => ({
   top: height ? "50px" : "110px",
   width: menu ? "40%" : "0",
-  op: menu ? "100%" : "0",
+  op: menu ? "90%" : "0",
   hide: menu ? "block" : "none",
 }))`
   height: 100%;
   width: ${({ width }) => width};
-  background-color: grey;
+  background-color: #ffefa0;
   position: fixed;
   top: ${({ top }) => top};
-  transition: 0.5s;
   opacity: ${({ op }) => op};
+  transition: 0.5s width, 0.5s opacity;
   z-index: 3;
-  p {
+  font-family: "Fredoka One", cursive;
+  text-decoration: none;
+  h3 {
     display: ${({ hide }) => hide};
+    padding: 0 0 10px 5px;
+  }
+  a {
+    color: #314e52;
+  }
+  a:hover {
+    text-decoration: none;
+    color: whitesmoke;
   }
 `;
 
@@ -55,15 +65,15 @@ export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const [menuIcon, setMenuIcon] = useState(menu);
   const menuItems = [
-    { path: "/", name: "home" },
-    { path: "/recipes", name: "recipes" },
-    { path: "/brewers", name: "brewers" },
-    { path: "/new/recipe", name: "create recipe" },
-    { path: "/new/brewer", name: "create brewer" },
+    { path: "/", name: "Home" },
+    { path: "/recipes", name: "Recipes" },
+    { path: "/brewers", name: "Brewers" },
+    { path: "/new/brewer", name: "New Brewer" },
+    { path: "/new/recipe", name: "New Recipe" },
   ];
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      document.documentElement.scrollTop > 50
+      document.documentElement.scrollTop > 100
         ? setHeight(true)
         : setHeight(false);
     });
@@ -98,7 +108,7 @@ export default function Header() {
       </HeaderContainer>
       <MenuContainer height={height} menu={showMenu}>
         {menuItems.map((e) => (
-          <p
+          <h3
             onClick={() => {
               setShowMenu(false);
               setMenuIcon(menu);
@@ -115,7 +125,7 @@ export default function Header() {
             >
               {e.name}
             </NavLink>
-          </p>
+          </h3>
         ))}
       </MenuContainer>
     </>
