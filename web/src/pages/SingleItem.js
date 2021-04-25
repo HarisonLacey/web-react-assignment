@@ -59,7 +59,8 @@ export default function SingleItem() {
     <Container
       style={{
         paddingTop: "50px",
-        height: "auto",
+        paddingBottom: "50px",
+        overflow: "auto",
         backgroundColor: "whitesmoke",
       }}
       fluid
@@ -168,10 +169,12 @@ export default function SingleItem() {
             <Col xs={12}>
               <hr style={{ border: "solid 2px" }} />
             </Col>
-            <Col xs={12}>
-              <Button>
-                <Link to={`/brewers/${item.brewer_id}`}>Visit Brewer</Link>
-              </Button>
+            <Col xs={12} style={{ textAlign: "center" }}>
+              <Link to={`/brewers/${item.brewer_id}`}>
+                <Button height="50px" style={{ width: "30%", height: "50px" }}>
+                  Visit Brewer
+                </Button>
+              </Link>
             </Col>
           </>
         )}
