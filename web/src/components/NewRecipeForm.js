@@ -79,7 +79,7 @@ export default function NewRecipeForm() {
           <Form onSubmit={formHandle}>
             <Select onChange={(e) => setBrewerId(e.target.value)} required>
               <option key={0} value="" disabled selected>
-                select brewer
+                Select Brewer
               </option>
               {brewers.map((e) => (
                 <option key={e.id} value={e.id}>
@@ -100,7 +100,7 @@ export default function NewRecipeForm() {
             ></textarea>
             <Select onChange={(e) => setBeanType(e.target.value)} required>
               <option value="" disabled selected>
-                bean type
+                Bean Type
               </option>
               <option value={"Robusta"}>Robusta</option>
               <option value={"Liberica"}>Liberica</option>
@@ -109,7 +109,7 @@ export default function NewRecipeForm() {
             </Select>
             <Select onChange={(e) => setBrewTime(e.target.value)} required>
               <option value="" disabled selected>
-                brew time
+                Brew Time
               </option>
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -124,7 +124,7 @@ export default function NewRecipeForm() {
             </Select>
             <Select onChange={(e) => setBrewMethod(e.target.value)} required>
               <option value="" disabled selected>
-                brew method
+                Brew Method
               </option>
               <option value={"French Press"}>French Press</option>
               <option value={"Drip"}>Drip</option>
@@ -149,7 +149,7 @@ export default function NewRecipeForm() {
             ></textarea>
             <Select onChange={(e) => setTags(e.target.value)} required>
               <option value="" disabled selected>
-                tags
+                Tags
               </option>
               <option value={"Light"}>Light</option>
               <option value={"Medium"}>Medium</option>
