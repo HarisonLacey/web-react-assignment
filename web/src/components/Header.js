@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
+import logo from "../assets/coffee-seed.png";
+import menu from "../assets/menu.png";
+import close from "../assets/close.png";
 
 // header and menu component
 
 const MenuContainer = styled.div.attrs(({ height, menu }) => ({
-  top: height ? "50px" : "100px",
+  top: height ? "50px" : "110px",
   width: menu ? "40%" : "0",
   op: menu ? "100%" : "0",
   hide: menu ? "block" : "none",
@@ -17,29 +21,44 @@ const MenuContainer = styled.div.attrs(({ height, menu }) => ({
   top: ${({ top }) => top};
   transition: 0.5s;
   opacity: ${({ op }) => op};
+  z-index: 3;
   p {
     display: ${({ hide }) => hide};
   }
 `;
 
 const HeaderContainer = styled.div.attrs(({ height }) => ({
-  height: height ? "50px" : "100px",
+  height: height ? "50px" : "110px",
   op: height ? "70%" : "100%",
+  font: height ? "2em" : "2.5em",
+  display: height ? "none" : "block",
+  pad: height ? "5px" : "none",
 }))`
   height: ${({ height }) => height};
   width: 100%;
   position: fixed;
   opacity: ${({ op }) => op};
-  background-color: whitesmoke;
+  background-color: #314e52;
   overflow: hidden;
   transition 0.5s;
   top: 0;
   z-index: 2;
+  h2 {
+    font-family: 'Lobster', cursive;
+    font-size: ${({ font }) => font};
+    transition: 0.5s;
+    color: #ffefa0;
+    display: ${({ display }) => display};
+  }
+  img {
+    padding-top: ${({ pad }) => pad};
+  }
 `;
 
 export default function Header() {
   const [height, setHeight] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [menuIcon, setMenuIcon] = useState(menu);
   const menuItems = [
     { path: "/", name: "home" },
     { path: "/recipes", name: "recipes" },
@@ -57,9 +76,30 @@ export default function Header() {
   return (
     <>
       <HeaderContainer height={height}>
-        <p onClick={() => (showMenu ? setShowMenu(false) : setShowMenu(true))}>
-          Menu
-        </p>
+        <Container fluid>
+          <Row noGutters>
+            <Col xs={1} md={3} lg={4}>
+              <img
+                src={menuIcon}
+                style={{ paddingTop: "8px", cursor: "pointer" }}
+                onClick={() => {
+                  showMenu ? setShowMenu(false) : setShowMenu(true);
+                  showMenu ? setMenuIcon(menu) : setMenuIcon(close);
+                }}
+              />
+            </Col>
+            <Col
+              xs={10}
+              md={6}
+              lg={4}
+              style={{ textAlign: "center", paddingTop: "5px" }}
+            >
+              <h2>Brewers Union</h2>
+              <img src={logo} />
+            </Col>
+            <Col xs={1} md={3} lg={4}></Col>
+          </Row>
+        </Container>
       </HeaderContainer>
       <MenuContainer height={height} menu={showMenu}>
         {menuItems.map((e) => (
