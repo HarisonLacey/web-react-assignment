@@ -36,6 +36,7 @@ export default function NewRecipeForm() {
     fecthBrewers();
   }, [api]);
   async function formHandle(e) {
+    setResponse("One second...");
     e.preventDefault();
     try {
       await axios.post(
@@ -63,7 +64,15 @@ export default function NewRecipeForm() {
   }
   return (
     // new recipe save form
-    <Container style={{ padding: "50px 0 0", backgroundColor: "whitesmoke" }} fluid>
+    <Container
+      style={{
+        paddingTop: "50px",
+        paddingBottom: "50px",
+        backgroundColor: "whitesmoke",
+        overflow: "auto",
+      }}
+      fluid
+    >
       <Row noGutters>
         <Col sm={3} lg={4}></Col>
         <Col sm={6} lg={4}>
@@ -148,7 +157,7 @@ export default function NewRecipeForm() {
               <option value={"Extra Strong"}>Extra Strong</option>
             </Select>
             <Button type="submit">Submit</Button>
-            <p>{response}</p>
+            <h3>{response}</h3>
           </Form>
         </Col>
         <Col sm={3} lg={4}></Col>

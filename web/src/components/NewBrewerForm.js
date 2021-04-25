@@ -13,6 +13,7 @@ export default function NewBrewerForm() {
   // set name and response and fetch brewer save api
   async function formHandle(e) {
     e.preventDefault();
+    setResponse("One second...");
     try {
       await axios.post(
         `${api}/brewers/`,
@@ -33,7 +34,15 @@ export default function NewBrewerForm() {
   }
   return (
     // new brewer save form
-    <Container style={{ padding: "50px 0 0", backgroundColor: "whitesmoke", height: "470px" }} fluid>
+    <Container
+      style={{
+        paddingTop: "50px",
+        paddingBottom: "50px",
+        backgroundColor: "whitesmoke",
+        overflow: "auto",
+      }}
+      fluid
+    >
       <Row noGutters>
         <Col sm={3} lg={4}></Col>
         <Col sm={6} lg={4}>
