@@ -4,6 +4,13 @@ import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import { ItemDisplay, Button } from "../styledComponents/sharedComponents";
+import question from "../assets/question.png";
+import bean from "../assets/bean.png";
+import time from "../assets/clock.png";
+import method from "../assets/method.png";
+import notes from "../assets/note.png";
+import strength from "../assets/strength.png";
 
 export default function SingleItem() {
   const [item, setItem] = useState({});
@@ -49,40 +56,148 @@ export default function SingleItem() {
     Item();
   }, [api, index, type]);
   return (
-    <Container style={{ padding: "50px 0 0" }} fluid>
+    <Container
+      style={{
+        paddingTop: "50px",
+        height: "auto",
+        backgroundColor: "whitesmoke",
+      }}
+      fluid
+    >
       <Row noGutters>
         {type === "recipes" && (
           <>
-            <Col sm={6} lg={4}>
-              <p>{item.title}</p>
+            <Col xs={12} style={{ textAlign: "center" }}>
+              <h2 style={{ fontFamily: '"Monoton", cursive' }}>{item.title}</h2>
+              <hr style={{ border: "solid 2px" }} />
             </Col>
-            <Col sm={3} lg={4}></Col>
-            <Col sm={3} lg={4}></Col>
-            <Col sm={6} lg={4}>
-              info
+            <Col xs={12}>
+              <Row noGutters>
+                <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
+                  <img src={question} />
+                </Col>
+                <Col
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingLeft: "3%",
+                    fontFamily: "'Monoton', cursive",
+                  }}
+                >
+                  <h2>{item.description}</h2>
+                </Col>
+                <Col xs={2}></Col>
+                <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
+                  <img src={bean} />
+                </Col>
+                <Col
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingLeft: "3%",
+                    fontFamily: "'Monoton', cursive",
+                  }}
+                >
+                  <h2>{item.bean_type}</h2>
+                </Col>
+                <Col xs={2}></Col>
+                <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
+                  <img src={time} />
+                </Col>
+                <Col
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingLeft: "3%",
+                    fontFamily: "'Monoton', cursive",
+                  }}
+                >
+                  <h2>{item.brew_time} minutes</h2>
+                </Col>
+                <Col xs={2}></Col>
+                <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
+                  <img src={method} />
+                </Col>
+                <Col
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingLeft: "3%",
+                    fontFamily: "'Monoton', cursive",
+                  }}
+                >
+                  <h2>{item.brew_method}</h2>
+                </Col>
+                <Col xs={2}></Col>
+                <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
+                  <img src={notes} />
+                </Col>
+                <Col
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingLeft: "3%",
+                    fontFamily: "'Monoton', cursive",
+                  }}
+                >
+                  <h2>{item.taste_notes}</h2>
+                </Col>
+                <Col xs={2}></Col>
+                <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
+                  <img src={strength} />
+                </Col>
+                <Col
+                  xs={6}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingLeft: "3%",
+                    fontFamily: "'Monoton', cursive",
+                  }}
+                >
+                  <h2>{item.tags}</h2>
+                </Col>
+                <Col xs={2}></Col>
+              </Row>
             </Col>
-            <Col sm={3} lg={4}></Col>
-            <Col sm={3} lg={4}></Col>
-            <Col sm={6} lg={4}>
-              <p>
+            <Col xs={12}>
+              <hr style={{ border: "solid 2px" }} />
+            </Col>
+            <Col xs={12}>
+              <Button>
                 <Link to={`/brewers/${item.brewer_id}`}>Visit Brewer</Link>
-              </p>
+              </Button>
             </Col>
-            <Col sm={3} lg={4}></Col>
-            <Col sm={3} lg={4}></Col>
           </>
         )}
         {type === "brewers" && (
           <>
-            <Col xs={12} sm={6} lg={4}>
-              <p>{item.name}</p>
+            <Col xs={12} style={{ textAlign: "center" }}>
+              <h2
+                style={{
+                  fontFamily: '"Monoton", cursive',
+                }}
+              >
+                {item.name}
+              </h2>
+              <hr style={{ border: "solid 2px" }} />
             </Col>
-            <Col sm={3} lg={4}></Col>
-            <Col sm={3} lg={4}></Col>
+            <Col xs={12} style={{ textAlign: "center" }}>
+              <h2 style={{ fontFamily: '"Monoton", cursive' }}>Recipes</h2>
+            </Col>
             <>
               {recipes.map((recipe) => (
-                <Col xs={6} md={4}>
-                  <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
+                <Col sm={6} md={4} style={{ padding: "10px 0" }}>
+                  <Link to={`/recipes/${recipe.id}`}>
+                    <ItemDisplay>
+                      <h2>{recipe.title}</h2>
+                    </ItemDisplay>
+                  </Link>
                 </Col>
               ))}
             </>
