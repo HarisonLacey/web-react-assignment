@@ -30,6 +30,10 @@ export default function AllItems() {
     }
     fecthItems();
   }, [api, id, reload]);
+  useEffect(() => {
+    setSearchItems([]);
+    setType("");
+  }, [id]);
   function listFilter(e) {
     switch (id) {
       case "recipes":
@@ -60,13 +64,14 @@ export default function AllItems() {
     }
   }
   return (
-    <Container style={{ padding: "0" }} fluid>
+    <Container style={{ padding: "50px 0 0" }} fluid>
       <Row noGutters>
         {/* filter options for recipes */}
-        <Col xs={6} md={4}>
+        <Col md={8} lg={6}>
           {id === "recipes" && (
             <>
               <Select
+                inline
                 required
                 onChange={(e) => {
                   setFilter(e.target.value);
@@ -83,6 +88,7 @@ export default function AllItems() {
               </Select>
               {filter === "" && (
                 <Select
+                  inline
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
@@ -94,7 +100,7 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Bean Type" && (
-                <Select required id="bean_type" onChange={listFilter}>
+                <Select inline required id="bean_type" onChange={listFilter}>
                   <option value="" disabled selected>
                     bean type
                   </option>
@@ -105,7 +111,7 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Brew Method" && (
-                <Select required id="brew_method" onChange={listFilter}>
+                <Select inline required id="brew_method" onChange={listFilter}>
                   <option value="" disabled selected>
                     brew method
                   </option>
@@ -126,7 +132,7 @@ export default function AllItems() {
                 </Select>
               )}
               {filter === "Strength" && (
-                <Select required id="tags" onChange={listFilter}>
+                <Select inline required id="tags" onChange={listFilter}>
                   <option value="" disabled selected>
                     Strength
                   </option>
@@ -137,6 +143,7 @@ export default function AllItems() {
                 </Select>
               )}
               <button
+                style={{ width: "20%" }}
                 onClick={() => {
                   setSearchItems([]);
                   setType("");
@@ -149,7 +156,7 @@ export default function AllItems() {
           {/* filter options for brewers */}
           {id === "brewers" && (
             <>
-              <Select required id="A" onChange={listFilter}>
+              <Select inline required id="A" onChange={listFilter}>
                 <option value="" disabled selected>
                   sort
                 </option>
@@ -164,8 +171,11 @@ export default function AllItems() {
             </>
           )}
         </Col>
-        <Col xs={6} md={4}></Col>
-        <Col xs={6} md={4}></Col>
+        <Col md={2} lg={3}></Col>
+        <Col md={2} lg={3}></Col>
+        <Col xs={12}>
+          ---------------------------------------------------------------------------------------
+        </Col>
         {/* display items section */}
         {searchItems.length === 0 && type === "" && (
           <>
