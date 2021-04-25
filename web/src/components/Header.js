@@ -29,24 +29,19 @@ const MenuContainer = styled.div.attrs(({ height, menu }) => ({
 
 const HeaderContainer = styled.div.attrs(({ height }) => ({
   height: height ? "50px" : "110px",
-  op: height ? "70%" : "100%",
-  font: height ? "2em" : "2.5em",
   display: height ? "none" : "block",
   pad: height ? "5px" : "none",
 }))`
   height: ${({ height }) => height};
   width: 100%;
   position: fixed;
-  opacity: ${({ op }) => op};
   background-color: #314e52;
   overflow: hidden;
-  transition 0.5s;
   top: 0;
   z-index: 2;
   h2 {
-    font-family: 'Lobster', cursive;
-    font-size: ${({ font }) => font};
-    transition: 0.5s;
+    font-family: "Lobster", cursive;
+    font-size: 2.5em;
     color: #ffefa0;
     display: ${({ display }) => display};
   }
@@ -103,7 +98,12 @@ export default function Header() {
       </HeaderContainer>
       <MenuContainer height={height} menu={showMenu}>
         {menuItems.map((e) => (
-          <p onClick={() => setShowMenu(false)}>
+          <p
+            onClick={() => {
+              setShowMenu(false);
+              setMenuIcon(menu);
+            }}
+          >
             <NavLink
               to={e.path}
               exact
