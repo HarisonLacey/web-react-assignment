@@ -42,7 +42,7 @@ export default function SingleItem() {
             console.log(err.message);
           }
           break;
-        // find single recipe by id
+        // find single brewer by id
         case "brewers":
           try {
             const res = await axios.get(`${api}/brewers/${index}`, {
