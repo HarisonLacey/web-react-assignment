@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContextWrapper } from "../contextWrapper/contextWrapper";
 import { Container, Row, Col } from "react-bootstrap";
 import { Form, Button } from "../styledComponents/sharedComponents";
+import { Link } from "react-router-dom";
 
 // new brewer signup form
 
@@ -58,6 +59,15 @@ export default function NewBrewerForm() {
           </Form>
         </Col>
         <Col sm={3} lg={4}></Col>
+        <Col xs={12} style={{ textAlign: "center", paddingTop: "50px" }}>
+          {response === "Brewer saved!" && (
+            <Link to="/new/recipe">
+              <Button height="50px" style={{ width: "30%" }}>
+                Create a Recipe
+              </Button>
+            </Link>
+          )}
+        </Col>
       </Row>
     </Container>
   );
