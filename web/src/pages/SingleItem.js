@@ -63,6 +63,9 @@ export default function SingleItem() {
     }
     Item();
   }, [api, index, type]);
+  function Capital(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
   return (
     <Container
       style={{
@@ -74,7 +77,7 @@ export default function SingleItem() {
       fluid
     >
       <Helmet>
-        <title>{type}</title>
+        <title>{Capital(type)}</title>
       </Helmet>
       <Row noGutters>
         {type === "recipes" && (

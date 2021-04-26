@@ -15,10 +15,13 @@ export default function Forms() {
   useEffect(() => {
     setFormRender(id);
   }, [id]);
+  function Capital(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
   return (
     <>
       <Helmet>
-        <title>new {id}</title>
+        <title>new {Capital(id)}</title>
       </Helmet>
       {formRender === "brewer" && <NewBrewerForm />}
       {formRender === "recipe" && <NewRecipeForm />}

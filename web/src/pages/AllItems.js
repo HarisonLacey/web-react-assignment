@@ -76,6 +76,10 @@ export default function AllItems() {
         return;
     }
   }
+  // capitalize function
+  function Capital(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
   return (
     <Container
       style={{
@@ -87,7 +91,7 @@ export default function AllItems() {
       fluid
     >
       <Helmet>
-        <title>{id}</title>
+        <title>{Capital(id)}</title>
       </Helmet>
       <Row noGutters>
         <Col xs={12}>
@@ -247,7 +251,9 @@ export default function AllItems() {
           </>
         )}
         {searchItems.length === 0 && type !== "" && (
-          <Col style={{ textAlign: "center", paddingTop: "20px", height: "500px" }}>
+          <Col
+            style={{ textAlign: "center", paddingTop: "20px", height: "500px" }}
+          >
             <h3>No results</h3>
           </Col>
         )}
