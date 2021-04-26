@@ -114,7 +114,7 @@ export default function AllItems() {
                 }}
               >
                 <option value="" disabled selected>
-                  filter type
+                  filter
                 </option>
                 <option value={"Bean Type"}>Bean Type</option>
                 <option value={"Brew Method"}>Brew Method</option>
@@ -130,7 +130,7 @@ export default function AllItems() {
                   required
                 >
                   <option value="" disabled selected>
-                    select filter first
+                    select filter
                   </option>
                 </Select>
               )}
