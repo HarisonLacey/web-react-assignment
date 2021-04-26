@@ -90,7 +90,7 @@ export default function SingleItem() {
             <Col xs={12}>
               <Row noGutters>
                 <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-                  <img src={question} />
+                  <img src={question} alt="question mark" />
                 </Col>
                 <Col
                   xs={6}
@@ -104,7 +104,7 @@ export default function SingleItem() {
                 </Col>
                 <Col xs={2}></Col>
                 <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-                  <img src={bean} />
+                  <img src={bean} alt="coffee bean" />
                 </Col>
                 <Col
                   xs={6}
@@ -118,7 +118,7 @@ export default function SingleItem() {
                 </Col>
                 <Col xs={2}></Col>
                 <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-                  <img src={time} />
+                  <img src={time} alt="clock" />
                 </Col>
                 <Col
                   xs={6}
@@ -132,7 +132,7 @@ export default function SingleItem() {
                 </Col>
                 <Col xs={2}></Col>
                 <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-                  <img src={method} />
+                  <img src={method} alt="brew method" />
                 </Col>
                 <Col
                   xs={6}
@@ -146,7 +146,7 @@ export default function SingleItem() {
                 </Col>
                 <Col xs={2}></Col>
                 <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-                  <img src={notes} />
+                  <img src={notes} alt="musical note" />
                 </Col>
                 <Col
                   xs={6}
@@ -160,7 +160,7 @@ export default function SingleItem() {
                 </Col>
                 <Col xs={2}></Col>
                 <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-                  <img src={strength} />
+                  <img src={strength} alt="strength" />
                 </Col>
                 <Col
                   xs={6}

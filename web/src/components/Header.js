@@ -88,6 +88,7 @@ export default function Header() {
           <Row noGutters>
             <Col xs={1} md={3} lg={4}>
               <img
+                alt="coffee bean logo"
                 src={menuIcon}
                 style={{ paddingTop: "8px", cursor: "pointer" }}
                 onClick={() => {
