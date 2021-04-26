@@ -59,7 +59,7 @@ export default function Landing() {
         >
           <Row noGutters>
             <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-              <img src={man} />
+              <img src={man} alt="man avatar" />
             </Col>
             <Col
               xs={6}
@@ -73,7 +73,7 @@ export default function Landing() {
             </Col>
             <Col xs={2}></Col>
             <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-              <img src={cup} />
+              <img src={cup} alt="coffee cup" />
             </Col>
             <Col
               xs={6}
@@ -87,7 +87,7 @@ export default function Landing() {
             </Col>
             <Col xs={2}></Col>
             <Col xs={4} style={{ textAlign: "right", padding: "3% 0" }}>
-              <img src={earth} />
+              <img src={earth} alt="earth" />
             </Col>
             <Col
               xs={6}
