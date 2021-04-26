@@ -21,7 +21,7 @@ export default function Forms() {
   return (
     <>
       <Helmet>
-        <title>new {Capital(id)}</title>
+        <title>New {Capital(id)}</title>
       </Helmet>
       {formRender === "brewer" && <NewBrewerForm />}
       {formRender === "recipe" && <NewRecipeForm />}

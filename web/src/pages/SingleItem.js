@@ -181,7 +181,7 @@ export default function SingleItem() {
             {/* link to brewer who owns recipe */}
             <Col xs={12} style={{ textAlign: "center" }}>
               <Link to={`/brewers/${item.brewer_id}`}>
-                <Button height="50px" style={{ width: "30%", height: "50px" }}>
+                <Button height="50px" style={{ width: "30%" }}>
                   Visit Brewer
                 </Button>
               </Link>
